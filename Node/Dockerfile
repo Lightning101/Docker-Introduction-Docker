@@ -9,15 +9,15 @@ WORKDIR /app
 
 # Copy package.json and package-lock.json to save data 
 # when not adding new packages but making source code changes.
-COPY package.json .
-COPY package-lock.json .
+COPY ./Node/package.json .
+COPY ./Node/package-lock.json .
 
 # NPM install initally to then copy source code
 # Used to execute commands that will be persistent in image
 RUN npm install
 
 # Copy the other source files
-COPY . .
+COPY ./Node/ .
 
 # Application port to be exposed inside Docker
 EXPOSE 3000 

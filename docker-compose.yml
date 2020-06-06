@@ -1,0 +1,32 @@
+# Which version of the docker compose reference to use
+version: "3"
+services:
+  mongodb:
+    build:
+      context: .
+      dockerfile: ./MongoDB/Dockerfile
+    image: "hero:mongodb"
+    restart: always
+    ports:
+    - 27017:27017
+    networks:
+      - heronet
+    environment:
+      - HOST=0.0.0.0
+  node:
+    build:
+      context: .
+      dockerfile: ./Node/Dockerfile
+    image: "hero:skywalker"
+    restart: always
+    networks:
+      - heronet
+    ports:
+      - "3000:3000"
+    environment:
+      - HOST=0.0.0.0
+    depends_on:
+      - mongodb
+networks:
+  heronet:
+    driver: bridge

@@ -30,6 +30,6 @@ const port = 3000
 app.listen(3000, () => console.log(`Hero Server up and running http://localhost:${port}`))
 
 // To be used when combined
-// app.use(bodyParser.urlencoded({ 'extended': 'true' }));
-// app.use(express.static(path.join(__dirname, 'dist')));
-// app.use('/', express.static(path.join(__dirname, 'dist')));
+app.use(bodyParser.urlencoded({ 'extended': 'true' }));
+app.use(express.static(path.join(__dirname, 'dist')));
+app.use('/', express.static(path.join(__dirname, 'dist')));
