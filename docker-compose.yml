@@ -17,7 +17,7 @@ services:
     build:
       context: .
       dockerfile: ./Node/Dockerfile
-    image: "hero:skywalker"
+    image: "hero:node"
     restart: always
     networks:
       - heronet
